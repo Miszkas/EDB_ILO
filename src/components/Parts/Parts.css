@@ -1,0 +1,53 @@
+.all-parts-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 40px;
+  padding: 100px 40px 60px;
+  box-sizing: border-box;
+}
+.part-card {
+  width: 350px;
+  height: 250px;
+  background-color: var(--card-color);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 2px solid #1f7a8c;
+  cursor: pointer;
+}
+
+.part-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  border-color: #1c9eb8;
+}
+
+.part-card:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+.part-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #18a9c6;
+}
+.part-description {
+  font-size: 16px;
+  color: var(--text-color);
+}
