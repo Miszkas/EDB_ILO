@@ -16,8 +16,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/lekcje" element={<Parts działy={CATEGORIES} />} />
-        <Route path="/dział/:name" element={<Part />} />
-        <Route path="/temat/:name" element={<Temat />} />
+        <Route path="/dzial/:dzialName" element={<Part />} />
+        <Route path="/dzial/:dzialName/temat/:tematName" element={<Temat />} />
       </Routes>
       <DotGrid
         dotSize={6}
