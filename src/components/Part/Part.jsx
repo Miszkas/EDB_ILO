@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { edbDatabase } from "../../../data/data";
 import { Link } from "react-router-dom";
+import BackArrow from "../BackArrow/BackArrow";
 
 import "./Part.css";
 
@@ -13,6 +14,7 @@ const Part = () => {
 
   return (
     <div className="part-page">
+      <BackArrow target="/lekcje" />
       <h1 id="part-title">{partName}</h1>
       <p id="part-description">{partData?.categoryDescription}</p>
       <div className="lessons-list">
