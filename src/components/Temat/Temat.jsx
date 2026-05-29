@@ -107,18 +107,20 @@ const Temat = () => {
       <div className="temat-content">
         {tematData?.blocks?.map((block, index) => renderContent(block, index))}
 
-        <h2 className="subheading quiz-heading">Sprawdź swoją wiedzę</h2>
-        {tematData?.quiz?.map((quiz, index) => renderQuiz(quiz, index))}
+        <div className="quiz-section">
+          <h2 className="subheading quiz-heading">Sprawdź swoją wiedzę</h2>
+          {tematData?.quiz?.map((quiz, index) => renderQuiz(quiz, index))}
 
-        {!isSubmitted ? (
-          <button className="quiz-submit" onClick={checkQuizAnswers}>
-            Sprawdź odpowiedzi
-          </button>
-        ) : (
-          <button className="quiz-reset" onClick={handleResetQuiz}>
-            Spróbuj ponownie
-          </button>
-        )}
+          {!isSubmitted ? (
+            <button className="quiz-submit" onClick={checkQuizAnswers}>
+              Sprawdź odpowiedzi
+            </button>
+          ) : (
+            <button className="quiz-reset" onClick={handleResetQuiz}>
+              Spróbuj ponownie
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
