@@ -3,6 +3,59 @@ import { useParams } from "react-router-dom";
 import BackArrow from "../BackArrow/BackArrow";
 import { edbDatabase } from "../../../data/data";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const renderContent = (block, index) => {
+  switch (block.type) {
+    case "h2":
+      return (
+        <h2 key={index} className="subheading">
+          {block.text}
+        </h2>
+      );
+    case "p":
+      return (
+        <p key={index} className="paragraph">
+          {block.text}
+        </p>
+      );
+    case "alert":
+      return (
+        <div key={index} className="alert">
+          {block.text}
+        </div>
+      );
+    default:
+      return null;
+  }
+};
+
+const getNextLesson = (currentDzial, currentTemat) => {
+  const currentIndex = edbDatabase.findIndex(
+    (lekcja) =>
+      lekcja.category === currentDzial && lekcja.title === currentTemat,
+  );
+  if (currentIndex === -1 || currentIndex === edbDatabase.length - 1)
+    return null;
+  const next = edbDatabase[currentIndex + 1];
+  return {
+    dzial: next.category.replace(/\s+/g, "-"),
+    temat: next.title.replace(/\s+/g, "-"),
+  };
+};
+
+const getPreviousLesson = (currentDzial, currentTemat) => {
+  const currentIndex = edbDatabase.findIndex(
+    (lekcja) =>
+      lekcja.category === currentDzial && lekcja.title === currentTemat,
+  );
+  if (currentIndex <= 0) return null;
+  const prev = edbDatabase[currentIndex - 1];
+  return {
+    dzial: prev.category.replace(/\s+/g, "-"),
+    temat: prev.title.replace(/\s+/g, "-"),
+  };
+};
 
 const Temat = () => {
   const { dzialName, tematName } = useParams();
@@ -17,45 +70,8 @@ const Temat = () => {
       lekcja.category === decodedDzialName && lekcja.title === decodedTematName,
   );
 
-  const checkQuizAnswers = () => {
-    const totalQuestions = tematData?.quiz?.length || 0;
-    if (Object.keys(quizAnswers).length < totalQuestions) {
-      alert("Proszę odpowiedzieć na wszystkie pytania przed sprawdzeniem!");
-      return;
-    }
-
-    setIsSubmitted(true);
-  };
-
-  const handleResetQuiz = () => {
-    setQuizAnswers({});
-    setIsSubmitted(false);
-  };
-
-  const renderContent = (block, index) => {
-    switch (block.type) {
-      case "h2":
-        return (
-          <h2 key={index} className="subheading">
-            {block.text}
-          </h2>
-        );
-      case "p":
-        return (
-          <p key={index} className="paragraph">
-            {block.text}
-          </p>
-        );
-      case "alert":
-        return (
-          <div key={index} className="alert">
-            {block.text}
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+  const prev = getPreviousLesson(decodedDzialName, decodedTematName);
+  const next = getNextLesson(decodedDzialName, decodedTematName);
 
   const renderQuiz = (quiz, quizIdx) => {
     return (
@@ -68,13 +84,9 @@ const Temat = () => {
 
             let optionClass = "quiz-option";
             if (isSubmitted) {
-              if (isCorrect) {
-                optionClass += " correct";
-              } else if (isSelected && !isCorrect) {
-                optionClass += " incorrect";
-              } else {
-                optionClass += " disabled";
-              }
+              if (isCorrect) optionClass += " correct";
+              else if (isSelected && !isCorrect) optionClass += " incorrect";
+              else optionClass += " disabled";
             }
 
             return (
@@ -99,6 +111,20 @@ const Temat = () => {
     );
   };
 
+  const checkQuizAnswers = () => {
+    const totalQuestions = tematData?.quiz?.length || 0;
+    if (Object.keys(quizAnswers).length < totalQuestions) {
+      alert("Proszę odpowiedzieć na wszystkie pytania przed sprawdzeniem!");
+      return;
+    }
+    setIsSubmitted(true);
+  };
+
+  const handleResetQuiz = () => {
+    setQuizAnswers({});
+    setIsSubmitted(false);
+  };
+
   return (
     <div className="temat">
       <BackArrow target={`/dzial/${dzialName}`} />
@@ -119,6 +145,25 @@ const Temat = () => {
             <button className="quiz-reset" onClick={handleResetQuiz}>
               Spróbuj ponownie
             </button>
+          )}
+        </div>
+
+        <div className="navigation-buttons">
+          {prev && (
+            <Link
+              to={`/dzial/${prev.dzial}/temat/${prev.temat}`}
+              className="nav-btn nav-btn--prev"
+            >
+              ← Poprzednia lekcja
+            </Link>
+          )}
+          {next && (
+            <Link
+              to={`/dzial/${next.dzial}/temat/${next.temat}`}
+              className="nav-btn nav-btn--next"
+            >
+              Następna lekcja →
+            </Link>
           )}
         </div>
       </div>
