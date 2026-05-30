@@ -153,6 +153,7 @@ const Temat = () => {
             <Link
               to={`/dzial/${prev.dzial}/temat/${prev.temat}`}
               className="nav-btn nav-btn--prev"
+              onClick={() => handleResetQuiz()}
             >
               ← Poprzednia lekcja
             </Link>
@@ -161,6 +162,7 @@ const Temat = () => {
             <Link
               to={`/dzial/${next.dzial}/temat/${next.temat}`}
               className="nav-btn nav-btn--next"
+              onClick={() => handleResetQuiz()}
             >
               Następna lekcja →
             </Link>
