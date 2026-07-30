@@ -12,6 +12,8 @@ import "./App.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+import { Analytics } from "@vercel/analytics/next";
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -25,6 +27,7 @@ const ScrollToTop = () => {
 const App = () => {
   return (
     <div className="App">
+      <Analytics />
       <ScrollToTop />
       <Navbar />
       <Routes>
