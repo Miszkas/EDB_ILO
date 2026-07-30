@@ -12,7 +12,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
