@@ -1,18 +1,14 @@
 :root {
-  /* Tła */
   --bg-color: #343a40;
   --card-color: #495057;
 
-  /* Akcent */
   --accent: #1f7a8c;
   --accent-hover: #1c9eb8;
   --accent-light: rgba(31, 122, 140, 0.1);
 
-  /* Tekst */
   --text-primary: #ced4da;
   --text-muted: #adb5bd;
 
-  /* Cienie i bordera */
   --border: 2px solid var(--accent);
   --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -49,7 +45,7 @@ body {
   overflow: hidden;
 }
 
-.dot-grid {
+.dot-grid.dot-grid-bg {
   position: fixed;
   z-index: -1;
   top: 0;

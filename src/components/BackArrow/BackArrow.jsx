@@ -1,12 +1,19 @@
 import "./BackArrow.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const BackArrow = ({ target }) => {
   return (
-    <Link to={target} className="back-arrow">
-      <FontAwesomeIcon icon={faArrowLeft} />
+    <Link to={target} className="back-arrow" aria-label="Wróć">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+      </svg>
     </Link>
   );
 };

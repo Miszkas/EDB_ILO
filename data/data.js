@@ -1,7 +1,4 @@
 export const edbDatabase = [
-  // ==========================================
-  // DZIAŁ I: BEZPIECZEŃSTWO PAŃSTWA
-  // ==========================================
 
   {
     id: "bezpieczenstwo-polityczne-militarne",
@@ -231,9 +228,6 @@ export const edbDatabase = [
     ],
   },
 
-  // ==========================================
-  // DZIAŁ II: OCHRONA LUDNOŚCI I OBRONA CYWILNA
-  // ==========================================
 
   {
     id: "mphkz",
@@ -458,9 +452,6 @@ export const edbDatabase = [
     ],
   },
 
-  // ==========================================
-  // DZIAŁ III: DZIAŁANIA RATOWNICZE W SYTUACJACH NADZWYCZAJNYCH
-  // ==========================================
 
   {
     id: "pozary",
@@ -867,9 +858,6 @@ export const edbDatabase = [
     ],
   },
 
-  // ==========================================
-  // DZIAŁ IV: PIERWSZA POMOC
-  // ==========================================
 
   {
     id: "pierwsza-pomoc-triada",
@@ -1274,9 +1262,6 @@ export const edbDatabase = [
     ],
   },
 
-  // ==========================================
-  // DZIAŁ V: EDUKACJA OBRONNA
-  // ==========================================
 
   {
     id: "sposoby-przetrwania",

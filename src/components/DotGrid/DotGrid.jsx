@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useEffect, useCallback, useMemo } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from 'gsap/gsap-core';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 import './DotGrid.css';
